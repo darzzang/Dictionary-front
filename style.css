@@ -58,6 +58,34 @@ body {
     display: inline-block; /* 컬럼 짤림 방지*/
 }
 
+a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:-webkit-any-link:hover{
+    text-decoration: underline;
+}
+
+.btn_allmost {
+    word-wrap: break-word;
+    word-break: keep-all;
+    list-style: none;
+    letter-spacing: 1px;
+    line-height: 25px;
+    margin: 0;
+    font-size: 12px;
+    font-family: 'Nanum Barun Gothic','New Gulim','새굴림';
+    border: 1px solid #a3a3a3;
+    background: rgba(255, 255, 255, 0.911) no-repeat 96% center;
+    border-radius: 3px;
+    padding: 3px 12px 2px 4px;
+    margin-left: 8px;
+    color: #666666;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
 
 /* 갤럭시 아이폰 반응형 웹 */
 @media screen and (max-width: 430px) {

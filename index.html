@@ -43,21 +43,17 @@
                         // 템플릿
                         `
                             <div class="item">
-                                <li>
-                                <dl>
-                                <dt>
                                 <div class = "word">
-                                    <a href =${word.r_link}>
+                                    <a href =${word.r_link} target="_blank">
                                         ${word.r_word}
-                                    <sup>${word.r_seq}</sup>
+                                        <sup>${word.r_seq? word.r_seq: ""}</sup>
                                     </a>
+                                    ${word.r_chi} ${word.r_pos}  
                                 </div>
-                                <p>${word.r_pos}</p>
-                                <p>${word.r_chi}</p>
-                                <p>${word.r_des}</p>
-                                </dt>
-                                </dl>
-                                </li>
+                                <p>
+                                    ${word.r_des} 
+                                    <a href=${word.r_link} class="btn_allmost" style="white-space:nowrap;">전체 보기</a>
+                                    </p>
                             </div>
                         `
                     )
