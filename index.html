@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사전 검색 서비스</title>
     <link rel="stylesheet" href="style.css"> <!--css불러오기-->
+    <div id = "title">
+        <h1>표준국어대사전</h1>
+    </div>
 </head>
 <body>
     <!-- 검색창 -->
     <div id="search-box">
-        <input id="search" type="text" value="">
+        <input id="search" type="text" value="" placeholder="단어를 검색하세요">
         <input id="submit" type="submit" value="submit">
     </div>
     <!-- 사전 -->
@@ -40,8 +43,21 @@
                         // 템플릿
                         `
                             <div class="item">
-                                <div class = "word">${word.name}</div>
-                                <p class="description">${word.description}</p>
+                                <li>
+                                <dl>
+                                <dt>
+                                <div class = "word">
+                                    <a href =${word.r_link}>
+                                        ${word.r_word}
+                                    <sup>${word.r_seq}</sup>
+                                    </a>
+                                </div>
+                                <p>${word.r_pos}</p>
+                                <p>${word.r_chi}</p>
+                                <p>${word.r_des}</p>
+                                </dt>
+                                </dl>
+                                </li>
                             </div>
                         `
                     )
