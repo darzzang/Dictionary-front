@@ -1,6 +1,6 @@
 const query = document.getElementById('search') // 검색한 값 가져오기
         const submitBtn = document.getElementById('submit')
-        const BASE_URL = 'http://localhost:5000/api/words'
+        const BASE_URL = 'http://localhost:5001/api/words'
 
         // 검색어에 특수문자가 들어간 경우 검색이 안되도록 함
         function checkIfStringHasSpecialCharacter(str) {    
