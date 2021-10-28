@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사전 검색 서비스</title>
-    <link rel="stylesheet" href="style.css"> <!--css불러오기-->
-    <div id = "title">
-        <h1>표준국어대사전</h1>
-    </div>
-</head>
-<body>
-    <!-- 검색창 -->
-    <div id="search-box">
-        <input id="search" type="text" value="" placeholder="단어를 검색하세요">
-        <input id="submit" type="submit" value="submit">
-    </div>
-    <!-- 사전 -->
-    <div id="container">
-        <img src="https://i.pinimg.com/originals/f1/79/90/f179907b01caacdc35af6a0f27bc6616.gif">
-    </div>
-
-    <script>
-        const query = document.getElementById('search') // 검색한 값 가져오기
+const query = document.getElementById('search') // 검색한 값 가져오기
         const submitBtn = document.getElementById('submit')
         const BASE_URL = 'http://localhost:5000/api/words'
 
@@ -124,6 +100,3 @@
         window.addEventListener('DOMContentLoaded', function(){ //브라우저에서 URL을 로드
             setTimeout(getData(BASE_URL, query.value), 5000)  // 5초
         })
-    </script>
-</body>
-</html>
