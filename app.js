@@ -1,6 +1,6 @@
 const query = document.getElementById('search') // 검색한 값 가져오기
         const submitBtn = document.getElementById('submit')
-        const BASE_URL = 'http://localhost:5001/api/words'
+        const BASE_URL = 'https://koreandic-search.herokuapp.com/api/words'
 
         // 검색어에 특수문자가 들어간 경우 검색이 안되도록 함
         function checkIfStringHasSpecialCharacter(str) {    
@@ -30,16 +30,20 @@ const query = document.getElementById('search') // 검색한 값 가져오기
             if (checkIfStringHasSpecialCharacter(query)) {  // 검색한 쿼리가 이 조건에 포함하는지 확인
                 enableSubmitBtn(false)  // 활성화
                 container.innerHTML = "특수문자는 검색할 수 없습니다."
+                count.innerHTML = "'" + query + "'  검색 결과 (총 " + 0 + "개)"
+                // alert("특수문자는 검색할 수 없습니다.")
                 return;
             } 
             if (checkIfStringHasNumbers(query)){
                 enableSubmitBtn(false)  // 활성화  
                 container.innerHTML = "숫자는 검색할 수 없습니다."
+                count.innerHTML = "'" + query + "'  검색 결과 (총 " + 0 + "개)"
                 return;
             }
             if (checkStringHasLetters(query)){
                 enableSubmitBtn(false)  // 활성화
                 container.innerHTML = "영어는 검색할 수 없습니다."
+                count.innerHTML = "'" + query + "'  검색 결과 (총 " + 0 + "개)"
                 return;
             }
 
@@ -56,31 +60,33 @@ const query = document.getElementById('search') // 검색한 값 가져오기
                 const {words} = data;
 
                 //데이터 유효성 검증
-                if(words.length === 0){
+                if(query.length === 0){
                     container.innerHTML = "검색 결과를 찾을 수 없습니다." 
+                    count.innerHTML = "'" + query + "'  검색 결과 (총 " + 0 + "개)"
                     return;
                 }
 
                 const template = words.map(word => {
                     return (
-                        // 템플릿
-                        `
-                            <div class="item">
-                                <div class = "word">
-                                    <a href =${word.r_link} target="_blank">
-                                        ${word.r_word}
-                                        <sup>${word.r_seq? word.r_seq: ""}</sup>
-                                    </a>
-                                    ${word.r_chi} ${word.r_pos}  
-                                </div>
-                                <p>
-                                    ${word.r_des} 
-                                    <a href=${word.r_link} class="btn_allmost" style="white-space:nowrap;">자세히 보기</a>
+                            // 템플릿
+                            `
+                                <div class="item">
+                                    <div class = "word">
+                                        <a href =${word.r_link} target="_blank">
+                                            ${word.r_word}
+                                            <sup>${word.r_seq? word.r_seq:""}</sup>
+                                        </a>
+                                        ${word.r_chi} ${word.r_pos}  
+                                    </div>
+                                    <p>
+                                        ${word.r_des} 
+                                        <a href=${word.r_link} class="btn_allmost" style="white-space:nowrap;">자세히 보기</a>
                                     </p>
-                            </div>
-                        `
+                                </div>
+                            `
                     )
                 })
+                count.innerHTML = "'" + query + "'  검색 결과 (총 " + words.length + "개)"
                 container.innerHTML = template.join("") // DOM 에 템플릿 삽입
             })
         }
@@ -97,6 +103,8 @@ const query = document.getElementById('search') // 검색한 값 가져오기
             }
         })
 
-        window.addEventListener('DOMContentLoaded', function(){ //브라우저에서 URL을 로드
-            setTimeout(getData(BASE_URL, query.value), 5000)  // 5초
-        })
+        // window.addEventListener('DOMContentLoaded', function(){ //브라우저에서 URL을 로드
+        //     setTimeout(getData(BASE_URL, query.value), 5000)  // 5초
+        // })
+
+        
